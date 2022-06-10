@@ -199,7 +199,7 @@ public function addata(Request $request)
         'name'=> 'required',
         'mobile'=> 'required',
         'address'=>  'required',
-        'email'=>  'required',
+        'email'=> + 'required',
         'password'=> 'required',
       ]);
 
