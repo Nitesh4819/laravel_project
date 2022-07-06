@@ -43,6 +43,31 @@ function __construct()
     //if($validator->fails()){
     //return redirect()->back()->with('success',$validator->messages()->first());
     // }
+
+    $validator = Validator::make($request->all(),[
+      'name'=>'required',
+      'mobile'=>'required|min:10|max:10',
+      'email'=>'required',
+      'password'=>'required',
+      'address'=>'required',
+      ],
+
+     [
+     'name.required'=>'Name is  re required ',
+    'mobile.required'=>'Mobile is required ',
+     'email.required'=>'email is required ',
+    'password.required'=>'password is required',
+     'address.required'=>'Address is required',
+    ],);
+
+
+        if ($validator->fails()) 
+        {
+
+      return redirect()->back()->withErrors($validator)->withInput();
+  // return redirect()->back()->with('error',$validator->messages()->first());
+         }
+
       if($request->password==$request->cpassword)
       {
         $data=User::where('sMobile',$request->mobile)->first();

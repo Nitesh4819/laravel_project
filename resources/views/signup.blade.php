@@ -10,14 +10,14 @@
          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
       {{-- custom css link --}}
       <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+repeat    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
          rel="stylesheet" type="text/css" />
 
       <style>
          .bg{
          background-image: url("{{asset('assets/image/back.jpg')}}");
          
-         background-repeat: no-repeat, repeat;
+         background-repeat: no-, repeat;
          }
          .toggle-number{
          float: right;
@@ -72,43 +72,75 @@
 
                     @csrf
                      <div class="py-2 mx-4" class="form-group"> 
-                        <input type="name" required  class="form-control border-info" name="name" id="exampleInputEmail1" placeholder=" Enter Your Name" aria-describedby="emailHelp">
+                        <input type="text"  value="{{old('name')}}" class="form-control border-info" name="name" id="exampleInputEmail1" placeholder=" Enter Your Name" aria-describedby="emailHelp">
+                     
+                     
+                        @error('name')
+                        <p style="color:red;"> {{ $message }}</p>
+                          <!-- <div class="alert alert-danger">{{ $message }}</div> -->
+                        @enderror
+                     
                      </div>
 
                      <div class="py-2 mx-4" class="form-group"> 
                        
-                        <input type="number" required class="form-control border-info" name="mobile" id="exampleInputEmail1" placeholder="Enter Your Mobile Number" aria-describedby="emailHelp">
-                        <i class="fa fa-mobile toggle-number"  aria-hidden="true"></i>
+                        <input type="text" class="form-control border-info" name="mobile" value="{{old('mobile')}}"  placeholder="Enter Your Mobile Number" >
+                        <i class="fa fa-mobile toggle-number"   aria-hidden="true"></i>
+                        @error('mobile')
+                        <p style="color:red;"> {{ $message }}</p>
+                          <!-- <div class="alert alert-danger">{{ $message }}</div> -->
+                        @enderror
+                     
                     </div>
 
                     
 
                  <div class="py-2 mx-4" class="form-group"> 
                         
-                  <input type="email" required class="form-control border-info"  name="email" id="exampleInputEmail1" placeholder=" Enter Your Email " aria-describedby="emailHelp">
+                  <input type="email" value="{{old('email')}}"  class="form-control border-info"  name="email" id="exampleInputEmail1" placeholder=" Enter Your Email " aria-describedby="emailHelp">
                   <i class="fa fa-envelope toggle-mail" aria-hidden="true"></i>
+
+                  @error('email')
+                  <p style="color:red;"> {{ $message }}</p>
+                    <!-- <div class="alert alert-danger">{{ $message }}</div> -->
+                  @enderror
    
                </div>
 
                      <div class="py-2 mx-4" class="form-group"> 
                         
-                        <input type="password" required class="form-control border-info" name="password" placeholder="Enter Your Password" id="exampleInputPassword1">
+                        <input type="password" value="{{old('password')}}" class="form-control border-info" name="password" placeholder="Enter Your Password" id="exampleInputPassword1">
                         <i class="toggle-password fa fa-fw fa-eye-slash"></i>
+                        @error('password')
+                  <p style="color:red;"> {{ $message }}</p>
+                    <!-- <div class="alert alert-danger">{{ $message }}</div> -->
+                  @enderror
                      </div> 
                       
                      <div class="py-2 mx-4" class="form-group"> 
-                        <input type="password" required class="form-control border-info" name="cpassword" placeholder="Enter Your Confirm Password" id="exampleInputPassword1">
+                        <input type="password" value="{{old('cpassword')}}"  class="form-control border-info" name="cpassword" placeholder="Enter Your Confirm Password" id="exampleInputPassword1">
                         <i class="toggle-password fa fa-fw fa-eye-slash"></i>
+                        @error('cpassword')
+                        <p style="color:red;"> {{ $message }}</p>
+                          <!-- <div class="alert alert-danger">{{ $message }}</div> -->
+                        @enderror
                      </div>
 
 
                       <div class="py-2 mx-4" class="form-group"> 
-                     <input type="text" required  class="form-control border-info" name="address" id="exampleInputEmail1" placeholder="Enter Your Address" aria-describedby="emailHelp">
-                 </div>
+                   
+                   
+                        <input type="text" value="{{old('address')}}" class="form-control border-info" name="address" id="exampleInputEmail1" placeholder="Enter Your Address" aria-describedby="emailHelp">
+                        @error('address')
+                        <p style="color:red;"> {{ $message }}</p>
+                          <!-- <div class="alert alert-danger">{{ $message }}</div> -->
+                        @enderror
+               
+                     </div>
                      {{-- <div  class="form-group" style="">--}}
 
 
-                        <input type="submit" required class="form-control btn-info mt-4"  value="REGISTRATON" style="width: 130px; margin-left:190px;">
+                        <input type="submit"  class="form-control btn-info mt-4"  value="REGISTRATON" style="width: 130px; margin-left:190px;">
                       {{-- </div>                 --}}
                      
                      </form> 
